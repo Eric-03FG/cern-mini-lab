@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <iostream>
 #include <random>
+#include <string>
 
 double estimate_pi(std::uint64_t n, std::uint32_t seed = 42) {
     std::mt19937 rng(seed);
@@ -17,8 +18,14 @@ double estimate_pi(std::uint64_t n, std::uint32_t seed = 42) {
     return 4.0 * static_cast<double>(inside) / static_cast<double>(n);
 }
 
-int main() {
-    const std::uint64_t n = 2'000'000;
+int main(int argc, char** argv) {
+
+    std::uint64_t n = 2'000'000;   // valor por defecto
+
+    // Si el usuario pasó un número, úsalo
+    if (argc >= 2) {
+        n = std::stoull(argv[1]);
+    }
 
     const auto t0 = std::chrono::high_resolution_clock::now();
     const double pi_hat = estimate_pi(n);
