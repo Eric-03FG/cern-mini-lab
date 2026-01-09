@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Conda / envs (por si acaso)
+.env/
+.venv/
+
+# C++ build
+cpp/build/
+*.o
+*.out
+
+# VS Code
+.vscode/
